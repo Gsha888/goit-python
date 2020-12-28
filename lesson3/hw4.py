@@ -1,0 +1,32 @@
+import os
+import sys
+
+path = r'c:\Users\Yasha\Desktop\goit-python\Lesson1\hw3'
+files = os.listdir(path)
+
+images = []
+video = []
+docs = []
+music = []
+unknown_files = []
+
+for i in files:
+    if i.endswith("jpeg" or "png" or "jpg"):
+        images.append(i)
+    elif i.endswith("avi" or "mp4" or "mov"):
+        video.append(i)
+    elif i.endswith("doc" or "docx" or "txt"):
+        docs.append(i)
+    elif i.endswith("mp3" or "ogg" or "wav" or "amr"):
+        music.append(i)
+    else:
+        unknown_files.append(i)
+
+all_ext = set(os.path.splitext(file)[-1] for file in files)
+
+print(images)
+print(video)
+print(docs)
+print(music)
+print(unknown_files)
+print(all_ext)
