@@ -11,13 +11,13 @@ music = []
 unknown_files = []
 
 for i in files:
-    if i.endswith("jpeg" or "png" or "jpg"):
+    if i.endswith("jpeg") or  i.endswith("png") or  i.endswith("jpg"):
         images.append(i)
-    elif i.endswith("avi" or "mp4" or "mov"):
+    elif i.endswith("avi") or i.endswith("mp4") or  i.endswith("mov"):
         video.append(i)
-    elif i.endswith("doc" or "docx" or "txt"):
+    elif i.endswith("doc") or  i.endswith("docx") or  i.endswith("txt"):
         docs.append(i)
-    elif i.endswith("mp3" or "ogg" or "wav" or "amr"):
+    elif i.endswith("mp3") or  i.endswith("ogg") or  i.endswith("wav") or  i.endswith("amr"):
         music.append(i)
     else:
         unknown_files.append(i)
