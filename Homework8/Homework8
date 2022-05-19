@@ -1,0 +1,46 @@
+from datetime import datetime, timedelta
+from collections import defaultdict
+    
+users = {
+    "Mike": "23.05.1987",
+    "Nick": "23.05.1976",
+    "Jordan": "20.05.2002",
+    "Julian": "19.05.1990",
+     "Chris": "24.05.1987",
+}
+new_dict = defaultdict(list)
+celebrations_days = {
+    0: "Monday",
+    1: "Tuesday",
+    2: "Wednesday",
+    3: "Thursday",
+    4: "Friday",
+    5: "Saturday",
+    6: "Sunday",
+}
+def get_birthdays_per_week(users):
+
+    today = datetime.now()
+    if today.weekday() == 0:
+        start_date = today + timedelta(days=-2)
+    else:
+        start_date = today
+    
+    end_date = today + timedelta(days=7)
+    delta =  timedelta(days=1)
+
+    while start_date <= end_date:
+        for k,v in users.items():
+            celeb_day = datetime.strptime(v, "%d.%m.%Y")
+            if celeb_day.month == start_date.month and celeb_day.day == start_date.day:
+                if today > start_date:
+                    celeb_day_new = celebrations_days.get(0)
+                    new_dict[celeb_day_new].append(k)
+                else:    
+                    celeb_day_new = celebrations_days.get(start_date.weekday())
+                    new_dict[celeb_day_new].append(k)
+        start_date += delta  
+    for k,v in new_dict.items():
+        print(f'{k}:{v}')
+
+get_birthdays_per_week(users)
